@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div class="app">
+    <!-- 需要被缓存的页面，建议使用视图命名来解决 -->
+    <keep-alive>
+      <router-view name='alive'></router-view>
+    </keep-alive>
+    
+    <!-- 不需要被缓存的组件，用default容器来显示 -->
+    <router-view></router-view>
+</div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang='scss'>
+html,body{
+  padding: 0;
+  margin: 0;
 }
+//样式的层级问题不够，放全局
+.van-checkbox{
+        &>div{
+            margin: 0 auto;
+        }
+    }
 </style>
